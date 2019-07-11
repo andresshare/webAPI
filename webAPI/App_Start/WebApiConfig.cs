@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
+using System.Net.Http.Headers;
+
 namespace webAPI
 {
     public static class WebApiConfig
@@ -19,6 +21,8 @@ namespace webAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/text"));
         }
     }
 }

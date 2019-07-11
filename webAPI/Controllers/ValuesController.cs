@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+
 
 namespace webAPI.Controllers
 {
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            DataTable dt = new DataTable();
+            dt.Columns.Add("DepID");
+            dt.Columns.Add("DeName");
+
+            dt.Rows.Add(1, "IT");
+            dt.Rows.Add(2, "Support");
+            return Request.CreateResponse(HttpStatusCode.OK, dt);
         }
 
         // GET api/values/5
